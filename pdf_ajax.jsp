@@ -34,7 +34,7 @@
         <%
             
            
-            String select="select pdfs from tbl_content where pdfs!='null' ";
+            String select="select pdfs from tbl_content where pdfs like '%.%' ";
             ResultSet rs=con.getData(select);
             while(rs.next())
             {
@@ -73,7 +73,7 @@
         <%
             
            
-            String select="select pdfs from tbl_content where pdfs!='null' and  cato='"+auth+"'";
+            String select="select pdfs from tbl_content where pdfs like '%.%' and  cato='"+auth+"'";
             ResultSet rs=con.getData(select);
             while(rs.next())
             {

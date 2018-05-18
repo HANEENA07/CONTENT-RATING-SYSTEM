@@ -1,11 +1,13 @@
 <%-- 
-    Document   : adhmp
-    Created on : 16 Jan, 2016, 4:35:29 PM
+    Document   : newjsp
+    Created on : 6 Feb, 2016, 12:10:43 AM
     Author     : Bibi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@include file="design/header.jsp" %>
+<%@include file="../admin/design/header.jsp" %>
+
+
 
 <%@include file="design/footer.jsp" %>

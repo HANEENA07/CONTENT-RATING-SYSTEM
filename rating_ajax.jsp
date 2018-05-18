@@ -149,7 +149,27 @@
                                     <td><%=res.getString("name")%></td>
                                    <td><%=uname%></td>
                                     <td><%=rat1%></td>
+                                    <%
+                                   if(auth.equalsIgnoreCase("Video"))
+        {
+                                    %>
                                     <td><a href="pllay.jsp?id=<%=res.getString("name")%>">view</a></td>
+                                         <%    
+        }
+                                   if(auth.equalsIgnoreCase("Image")){                           %>
+
+                                   <td><a href="galaryview.jsp?id=<%=res.getString("name")%>">view</a></td>
+                                     <%    }                           %>
+<%    
+       
+                                   if(auth.equalsIgnoreCase("Article")){                           %>
+
+                                   <td><a href="pdfcmm.jsp?id=<%=res.getString("name")%>">view</a></td>
+                                     <%    }else{                           %>
+
+                                   
+                                   
+                                   <%}%>
                                 </tr>
                                     <%
                     }

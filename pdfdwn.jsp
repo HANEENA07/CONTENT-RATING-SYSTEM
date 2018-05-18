@@ -4,15 +4,11 @@
     Author     : Bibi
 --%>
 
-
-
-
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean class="com.library.dataaccess.DataAccess" id="con"/> 
 <%@page  import="java.sql.*" %>
 <%@include file="design/header.jsp" %>
+
 <script type="text/javascript">
     var request;
     function getRequest()
@@ -49,7 +45,7 @@
             <td>Select Catogory</td>
             <td><select name="catogory" onchange="doProcessing()">
                     
-                    <option>ALL</option>
+                    <option>Select</option>
                     
                      <% 
                          
@@ -71,14 +67,14 @@
 </form>
 <div id="tablediv">
 
-    <h2 align="center" style=" color:  #FFF">A R T I C L E S </h2>
+<h2 align="center">A R T I C L E S&nbsp;&nbsp;</h2>
 <table  style="color: #FFF">
    
     <tbody>
         <%
             
            
-            String select="select pdfs from tbl_content where pdfs like '%.%' order by cnt_id desc ";
+            String select="select pdfs from tbl_content where pdfs like '%.%' order by cnt_id desc";
             ResultSet rs=con.getData(select);
             while(rs.next())
             {
@@ -93,7 +89,7 @@
     <td>  <a href="../pdf//<%=rs.getString("pdfs")%>" download="../pdf/<%=rs.getString("pdfs")%>"><figure><img src="../Download1.ico" height="20" width="20"/></figure></a>
      
                 </td>
-                
+                <td><a href="pdfcmm.jsp?id=<%=rs.getString("pdfs")%>">comment</a></td>
        
     
        

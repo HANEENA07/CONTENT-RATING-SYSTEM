@@ -15,41 +15,116 @@
             ResultSet rs=con.getData(select);
             while(rs.next())
             {
-             String idd1=rs.getString("user_id");
+                String idd1=rs.getString("user_id");
       String sel1="select * from tbl_user where id='"+idd1+"';";
       ResultSet rs5 = con.getData(sel1);
-     rs5.next(); 
+     rs5.next();   
             %>
-    <figure><img src="../image/<%=rs.getString("picture")%>" height="200" width="200" alt="loding....."/></a><figcaption style="color: #ffffff"><%=rs.getString("picture")%></figcaption><figcaption style="color: #ffffff"> Posted by  <%=rs5.getString("username")%>  User id is <%=rs.getString("user_id")%></figcaption></figure></a><table border="1"></a>
+    <figure><img src="../image/<%=rs.getString("picture")%>" height="200" width="200" alt="loding....."/></a><figcaption style=" color:  #ffffff"><%=rs.getString("picture")%></figcaption></figcaption> <figcaption style=" color:  #ffffff">Posted by      <%=rs5.getString("username")%></figcaption></figure></a><table border="1"></a>
                
             <form action="action/comment_action.jsp"  >      
     <input type="hidden" value="<%=rs.getString("picture")%>" name="vid"/>
      <input type="hidden" value="<%=rs.getString("cnt_id")%>" name="cntid"/>
-     <%--   <tr>
-            <td>Comment</td>
+         <input type="hidden" value="image" name="type"/>
+                <tr>
+                    <td style="color: #ffffff">Comment</td>
             <td><textarea name="txtcomment" rows="4" cols="20"></textarea></td>
         </tr>
         <tr>
-            <td>Rating</td>
+            <td style=" color:  #ffffff">Rating</td>
             <td>&nbsp;&nbsp;&nbsp;<input type="radio" name="txtrate" value="1" checked="checked" />&nbsp;&nbsp;&nbsp;<input type="radio" name="txtrate" value="2" />&nbsp;&nbsp;&nbsp;<input type="radio" name="txtrate" value="3" />&nbsp;&nbsp;&nbsp;<input type="radio" name="txtrate" value="4" />&nbsp;&nbsp;&nbsp;<input type="radio" name="txtrate" value="5" /></td>
-        </tr>--%>
+        </tr>
         <tr><td></td>
             <td><a href="../image//<%=rs.getString("picture")%>" download="../image/<%=rs.getString("picture")%>" onclick="location.href='action/imgdownload.jsp?id=<%=rs.getString("picture")%>';">Download</a></td>
             
         </tr>
-        <%--<tr>
+        <tr>
             <td><input type="submit" value="Post" /></td>
             <td></td>
-        </tr>--%>
+        </tr>
         <%
                 
             }
             %>
     </tbody>
 </table>
+<table border="1" style="color: #ffffff">
+                <thead>
+                    <tr>
+                        <th>comments</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+String SELECT1 = "SELECT * from tbl_comment where name='"+id+"';";
+                 
+            ResultSet rs1 = con.getData(SELECT1);
+  while(rs1.next())
+ {
+     String idd=rs1.getString("userid");
+      String sel="select * from tbl_user where id='"+idd+"';";
+      ResultSet rs3 = con.getData(sel);
+     rs3.next();
+     
+ %>
+ <tr>
+     <td><%=rs3.getString("username")%></td>
+     <td><%=rs1.getString("comment")%></td>
+     
+     
+     
+ </tr>
+ <%
+ 
+ }
+ %>
+                   
+                </tbody>
+            </table>
       
-</figure></td>
-
+<aside class="sidebar big-sidebar right-sidebar">
+	<div id="mainHolder" style="overflow: hidden; max-height: 400px;">
+					
+        <table border="0" >
+   
+    <tbody>
+           <tr>
+            <td> 
+ <td> 
+    <marquee  direction='up' >
+                
+               <%
+  String select1="select * from tbl_content where picture='"+id+"' ";
+            ResultSet rs11=con.getData(select1);
+     String pho="";     
+            while(rs11.next())
+            {
+             String iddd1=rs11.getString("user_id");
+       
+                
+  
+   String sel="select adimg from tbl_adpost where userid='"+iddd1+"' ";
+    ResultSet rs2=con.getData(sel);
+    while(rs2.next())
+    {
+       pho=rs2.getString("adimg");
+            %>
+         
+      <img src="../adimg/<%=pho%>" height="300px" width="400px" />
+               <%
+            }
+            }
+                %>
+    </marquee>
+    
+ </td>
+        </tr>
+    </tbody>
+</table>
+</aside>
+                  </aside>
+    	<div class="clear"></div>
 
 
 <%@include file="design/footer.jsp" %>

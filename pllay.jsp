@@ -11,8 +11,9 @@
 <table style="color: #ffffff">
     <tr>
         <% String id=request.getParameter("id");
-            String select="select * from tbl_content where video='"+id+"' ";
+            String select="select * from tbl_content where video='"+id+"'; ";
             ResultSet rs=con.getData(select);
+          
             while(rs.next())
             {
              String idd1=rs.getString("user_id");
@@ -24,9 +25,13 @@
                 <source src="../video/<%=rs.getString("video")%>" type="video/mp4">
   <source src="movie.ogg" type="video/ogg">
   Your browser does not support the video tag.
-    </video><figcaption style="color: #ffffff"><%=rs.getString("video")%></figcaption><figcaption style="color: #ffffff">posted by     <%=rs5.getString("username")%> user id   <%=rs5.getString("id")%></figcaption><table border="1"></a>
+    </video><figcaption style="color: #ffffff"><%=rs.getString("video")%></figcaption><figcaption style="color: #ffffff">posted by     <%=rs5.getString("username")%></figcaption><table border="1"></a>
                
+           
+            <td><a href="../video/<%=rs.getString("video")%>" download="../video/<%=rs.getString("video")%>" onclick="location.href='action/download.jsp?id=<%=rs.getString("video")%>';">Download</a></td>
             
+      
+        
         <%
                 
             }
@@ -70,38 +75,6 @@ String SELECT1 = "SELECT * from tbl_comment where name='"+id+"';";
             </table>
 
 
-<aside class="sidebar big-sidebar right-sidebar">
-	<div id="mainHolder" style="overflow: hidden; max-height: 400px;">
-					
-        <table border="0" >
-   
-    <tbody>
-           <tr>
-            <td> 
- <td> 
-    <marquee  direction='up' >
-                
-               <%
-                   String pho="";
-   String sel="select adimg from tbl_adpost ";
-    ResultSet rs2=con.getData(sel);
-    while(rs2.next())
-    {
-       pho=rs2.getString("adimg");
-            %>
-         
-      <img src="../adimg/<%=pho%>" height="300px" width="400px" />
-               <%
-            }
-                %>
-    </marquee>
-    
- </td>
-        </tr>
-    </tbody>
-</table>
-</aside>
-                  </aside>
     	<div class="clear"></div>
 
 

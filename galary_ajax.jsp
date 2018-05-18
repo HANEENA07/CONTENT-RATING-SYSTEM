@@ -68,7 +68,7 @@
         else{
         
             int i=0,k=0,j=0;
-            String sel="select count(*) as b from tbl_content where cato='"+auth+"'";
+            String sel="select count(*) as b from tbl_content where cato='"+auth+"' and  picture like '%.%'";
             ResultSet res=con.getData(sel);
             while(res.next())
             {
@@ -77,7 +77,7 @@
            %>     
 
         <%
-            String select="select * from tbl_content where cato='"+auth+"' and  picture like '%.%'";
+            String select="select * from tbl_content where cato='"+auth+"' and  picture like '%.%'; ";
             ResultSet rs=con.getData(select);
             while(j<k)
             {
