@@ -11,6 +11,7 @@
 
 <%
      String auth=request.getParameter("sid");
+     String auth1=request.getParameter("ss");
      String condition="";
         if(!auth.equalsIgnoreCase("select")){
          condition=" AND date='"+auth+"' ";
@@ -38,7 +39,7 @@
            %>     
 
         <%
-            String select="select * from tbl_content where picture like '%.%'";
+            String select="select * from tbl_content";
             ResultSet rs=con.getData(select);
             while(j<k)
             {
@@ -68,7 +69,7 @@
         else{
         
             int i=0,k=0,j=0;
-            String sel="select count(*) as b from tbl_content where cato='"+auth+"' and  picture like '%.%'";
+            String sel="select count(*) as b from tbl_content where cato='"+auth+"' and  picture like '%.%';";
             ResultSet res=con.getData(sel);
             while(res.next())
             {
@@ -77,7 +78,7 @@
            %>     
 
         <%
-            String select="select * from tbl_content where cato='"+auth+"' and  picture like '%.%'; ";
+            String select="select * from tbl_content where cato='"+auth+"' and  picture like '%.%';";
             ResultSet rs=con.getData(select);
             while(j<k)
             {
@@ -90,7 +91,7 @@
               if(rs.next())
                 {   
           %>
-      
+          <%=auth1%>
           <td><figure><a href="../image/<%=rs.getString("picture")%>"/><img src="../image/<%=rs.getString("picture")%>" height="200" width="200" alt="loding....."/></a><figcaption><%=rs.getString("picture")%></figcaption></figcaption></figure></td>
        
     

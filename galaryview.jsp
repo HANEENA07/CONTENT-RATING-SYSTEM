@@ -8,6 +8,7 @@
 <jsp:useBean class="com.library.dataaccess.DataAccess" id="con"/> 
 <%@page  import="java.sql.*" %>
 <%@include file="design/header.jsp" %>
+
 <table>
     <tr>
         <% String id=request.getParameter("id");
@@ -104,15 +105,16 @@ String SELECT1 = "SELECT * from tbl_comment where name='"+id+"';";
        
                 
   
-   String sel="select adimg from tbl_adpost where userid='"+iddd1+"' ";
+   String sel="select * from tbl_adpost ad,tbl_booking bk where bk.id=ad.userid  and bk.status=-1";
     ResultSet rs2=con.getData(sel);
     while(rs2.next())
     {
        pho=rs2.getString("adimg");
+      if(rs2.getString("content").equalsIgnoreCase(id)){
             %>
-         
-      <img src="../adimg/<%=pho%>" height="300px" width="400px" />
+            <img src="../image/<%=pho%>" height="300px" width="400px" />
                <%
+      }
             }
             }
                 %>

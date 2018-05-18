@@ -4,11 +4,15 @@
     Author     : Bibi
 --%>
 
+
+
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean class="com.library.dataaccess.DataAccess" id="con"/> 
 <%@page  import="java.sql.*" %>
 <%@include file="design/header.jsp" %>
-
 <script type="text/javascript">
     var request;
     function getRequest()
@@ -37,6 +41,7 @@
             request.send(null);
     }
 </script>
+ 
 <form name="searchForm">
 
     <table border="1" style="color: #fff">
@@ -45,7 +50,7 @@
             <td>Select Catogory</td>
             <td><select name="catogory" onchange="doProcessing()">
                     
-                    <option>Select</option>
+                    <option>ALL</option>
                     
                      <% 
                          
@@ -65,9 +70,10 @@
     </tbody>
 </table>
 </form>
+                    <h2 align="center" style="color:  #FFF">A R T I C L E S</h2>
 <div id="tablediv">
 
-<h2 align="center">A R T I C L E S&nbsp;&nbsp;</h2>
+
 <table  style="color: #FFF">
    
     <tbody>

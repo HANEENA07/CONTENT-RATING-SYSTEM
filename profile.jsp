@@ -1,6 +1,6 @@
 <%-- 
-    Document   : adreg
-    Created on : 17 Jan, 2016, 1:08:57 PM
+    Document   : usreg
+    Created on : 17 Jan, 2016, 12:37:28 PM
     Author     : Bibi
 --%>
 
@@ -16,64 +16,71 @@
 </script>
 <%
 String id=session.getAttribute("id").toString();
-String s="select * from tbl_adagency where adagid='"+id+"'";
-ResultSet rs = con.getData(s);
-rs.next();  
-
+String s=" select * from tbl_user where id='"+id+"' ";
+ ResultSet rs = con.getData(s);
+     rs.next();  
+  
 %>
-<h2  style=" color:  #FFF"> E n t e r &nbsp;&nbsp;t h e&nbsp;&nbsp; D e t a i l s
-</h2>
 
 
-<form action="action/prupdate.jsp" onsubmit="fns();" method="POST">
 
+<h2 align="center"> E N T E R&nbsp;&nbsp; T H E&nbsp;&nbsp; D E A I L S                        
+                            
+                
+    
+</h2>  
+    
+    <h1>
+    
+        <input type="hidden" name="1" value="" />
+      
+</h1>
+
+<form action="action/prupdate.jsp"  onsubmit="fns();" method="POST">
     <table border="0" style="color: #FFF">
    
     <tbody>
+      
+        
+        
         <tr>
-            <td>Agency Registered ID</td>
-            <td><input type="text" name="txtadreid" value="<%=rs.getString("regid")%>" required="1" /></td>
-        </tr>
-        <tr>
-            <td>Company Name</td>
-            <td><input type="text" name="txtadname" value="<%=rs.getString("name")%>" required="1" /></td>
-        </tr>
-        <tr>
-            <td>Agency Head</td>
-            <td><input type="text" name="txtadhead" value="<%=rs.getString("ownername")%>" pattern="[a-zA-Z .]{0,500}" required title="Enter valid name (Only characters, space,)" /></td>
-        </tr>
-        <tr>
-            <td>Account NO</td>
-            <td><input type="text" name="txtadaccno" value="<%=rs.getString("accno")%>" pattern="[0-9]{11}" required title="Enter valid account number(11 digit)" /></td>
-        </tr>
-        <tr>
-            <td>Bank Name</td>
-            <td><input type="text" name="txtadbnkname" value="<%=rs.getString("bankname")%>" required="" /></td>
-        </tr>
-        <tr>
-            <td>Email ID</td>
-            <td><input type="text" name="txtadmail" value="<%=rs.getString("email")%>" required title="Enter valid Mail id (eg: x@gmail.com, y@yahoo.com)" pattern="[a-zA-Z0-9., ]{1,200}[@]{1}[gmailhotulkyredf]{5,7}[.]{1}[cominrg]{2,3}" /></td>
-        </tr>
-        <tr>
-            <td>Phone NO</td>
-            <td><input type="text" name="txtadphno" value="<%=rs.getString("phno")%>" pattern="[0-9]{10,12}" required title="Enter valid Phone (eg: 8974586321, 7896485361, 912486321475)" /></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="text" name="txtpass" value="<%=rs.getString("password")%>" pattern="[a-zA-Z.,/@!#$%^&*()_+=:;0-9]{4,100}" required title="Atleast 4 characters" /></td>
+            <td>Name</td>
+            <td><input type="text" name="txtusname" value="<%=rs.getString("username")%>" pattern="[a-zA-Z .]{0,500}" required title="Enter valid name (Only characters, space, dot)" /></td>
         </tr>
         
         <tr>
             <td>Address</td>
-            <td><textarea name="txtaddress" rows="4" cols="20" required=""><%=rs.getString("address")%></textarea> </td>
+            <td><textarea name="txtusaddress" rows="5" cols="22" required=""><%=rs.getString("address")%></textarea></td>
         </tr>
         <tr>
+            <td>Account NO</td>
+            <td><input type="text" name="txtusaccno" value="<%=rs.getString("accno")%>" pattern="[0-9]{11}" required title="Enter valid account number(11 digit)" /></td>
+        </tr>
+        <tr>
+            <td>Bank Name</td>
+            <td><input type="text" name="txtusbnkname" required="" value="<%=rs.getString("bankname")%>" /></td>
+        </tr>
+      
+            
+        <tr>
+            <td>Email ID</td>
+            <td><input type="text" name="txtusmail" value="<%=rs.getString("emailid")%>" pattern="[a-zA-Z0-9., ]{1,200}[@]{1}[gmailhotulkyredf]{5,7}[.]{1}[cominrg]{2,3}" required title="Enter valid email(eg: exmple@gmail.com, example.,@hotmail.com)"/></td>
+        </tr>
+        <tr>
+            <td>Phone NO</td>
+            <td><input type="text" name="txtusphno" value="<%=rs.getString("phnno")%>" pattern="[0-9]{10,12}" required title="Enter valid Phone (eg: 8974586321, 7896485361, 912486321475)"/></td>
+        </tr>
+        
+        <tr>
             <td><input type="submit" value="Update" /></td>
-             
+            <td><a href="action/del.jsp">Delete</a></td>
         </tr>
     </tbody>
 </table>
-
 </form>
 
+
+
+
 <%@include file="design/footer.jsp" %>
+
