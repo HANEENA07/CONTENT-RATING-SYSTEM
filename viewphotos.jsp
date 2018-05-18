@@ -44,28 +44,23 @@
       <tbody>
         <tr>
             <td>Select Catogory</td>
-            <td><select name="catogory" onchange="doProcessing()">
-                    
+            <td><select  onchange="doProcessing()" name="catogory">
                     <option>ALL</option>
-                    
-                     <% 
-                         
-                         String q="select distinct(name) from tbl_cato ";  
-   ResultSet rsitem = con.getData(q);
-                        while (rsitem.next()) {
-                    %>
-                    
-                    
-                    <option><%=rsitem.getString("name")%></option>
-                    <%
-                        }
-                    %>
+                    <option>Sports</option>
+                    <option>Arts</option>
+                    <option>Films</option>
+                    <option>Educational</option>
+                    <option>TV Shows</option>
+                    <option>Nature</option>
+                    <option></option>
+                    <option></option>
+                    <option></option>
+                    <option></option>
                 </select></td>
         </tr>
     </tbody>
 </table>
 </form>
-                 <h2 align="center" style="color:  #FFF">G A L L E R Y </h2>
 <div id="tablediv">
 
 <table border="0" cellspacing="20" cellpadding="10">
@@ -84,7 +79,7 @@
            %>     
 
         <%
-            String select="select * from tbl_content where picture like '%.%'  order by cnt_id desc";
+            String select="select * from tbl_content";
             ResultSet rs=con.getData(select);
             while(j<k)
             {

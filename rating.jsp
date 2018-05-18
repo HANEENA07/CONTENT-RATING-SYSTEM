@@ -8,64 +8,12 @@
 <jsp:useBean class="com.library.dataaccess.DataAccess" id="con"/> 
 <%@page  import="java.sql.*" %>
 <%@include file="design/header.jsp" %>
-<h2 align="center">R A T I N G S &nbsp;&nbsp;</h2>
-    
-
-<script type="text/javascript">
-    var request;
-    function getRequest()
-    {
-        if (window.XMLHttpRequest)
-            return new XMLHttpRequest();
-        else if (winodw.ActiveXObject)
-            return new ActiveXObject("Microsoft.XMLHTTP");
-        else
-            return null;
-    }
-    function doProcessing()
-    {
-        request = getRequest();
-        var url="rating_ajax.jsp?sid=" + document.searchForm.catogory.value;
-         
-            request.open("GET", url, true);
-           
-            request.onreadystatechange = function()
-            {
-                if (request.readyState == 4 || request.status == 200)
-                {
-                    document.getElementById("tablediv").innerHTML = request.responseText;
-                }
-            }
-            request.send(null);
-    }
-</script>
-<form name="searchForm">
-
-    <table border="1" style="color: #FFF">
-      <tbody>
-        <tr>
-            <td>Select Catogory</td>
-            <td><select  onchange="doProcessing()" name="catogory">
-                     <option>All</option>
-                    <option>Video</option>
-                    <option>Image</option>
-                    <option>Article</option>
-                    
-                </select></td>
-        </tr>
-    </tbody>
-</table>
-</form>
-<div id="tablediv">
-
-
-   
-  <table border="1"style="color: #FFFFFF">
+  <table border="1"style="color: #FFF">
                             <thead>
                                 <tr>
-                                    <th style=" color:  #FFFFFF">Name</th>
-                                    <th style="color:  #FFFFFF">User</th>
-                                    <th style="color:  #FFFFFF">Rating</th>
+                                    <th>Name</th>
+                                    <th>User</th>
+                                    <th>Rating</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,7 +72,6 @@
                                     <td><%=res.getString("name")%></td>
                                    <td><%=uname%></td>
                                     <td><%=rat1%></td>
-                                    <td><a href="pllay.jsp?id=<%=res.getString("name")%>">view</a></td>
                                 </tr>
                                     <%
                     }
